@@ -1,17 +1,12 @@
 package com.example.operations.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "account_transaction")
 public class Transaction {
@@ -29,5 +24,5 @@ public class Transaction {
 
     @Column(name = "transactionamount")
     private BigDecimal amount;
-
+    
 }

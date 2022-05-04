@@ -11,6 +11,7 @@ import com.example.operations.repositories.TransactionRepository;
 import com.example.operations.repositories.TransferRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 
 import javax.xml.bind.JAXBException;
@@ -69,6 +70,7 @@ public class TransferService {
 
     private BigDecimal convertValue(TransferRequest fromAccount, TransferRequest toAccount, String currency, BigDecimal amount) throws JAXBException {
         BigDecimal result = cbrClient.getCurrencyData().getUSD().getCurs();
+        Assert.notNull(result, "Currency value cannot be null.");
         boolean isCurrencyEquals = fromAccount.getCurrentCurrency().equals(toAccount.getCurrentCurrency());
         currency = CurrencyEnum.USD.getAbbreviation();
 
