@@ -1,5 +1,6 @@
 package com.example.operations.service;
 
+import com.example.operation.AllData;
 import com.example.operations.configurations.CBRClient;
 import com.example.operations.dto.TransferBodyRequest;
 import com.example.operations.dto.TransferRequest;
@@ -77,7 +78,7 @@ public class TransferService {
         if (isCurrencyEquals) {
             result = amount;
         } else if (fromAccount.getCurrentCurrency().equals(currency) && !isCurrencyEquals) {
-            result = amount.multiply(amount);
+            result = amount.multiply(result);
         } else {
             result = amount.divide(result, 2, RoundingMode.HALF_UP);
         }
